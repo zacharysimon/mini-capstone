@@ -2,8 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$lightbulb-yellow: #F4D03F;
 
-.storefront img {
-  width: 100px;
-  height: 100px;
+.nav li:hover {
+  color: $lightbulb-yellow;
+}
+
+
+.jumbotron .btn{
+  background-color: #22313F
+}
+.storefront 
+  img {
+    width: 100px;
+    height: 100px;
+    margin-right: 40px;
+  }
+  p {
+    color: $lightbulb-yellow;
+  }
+  h4{
+    color:white;
+  }
+  .container{
+    padding: 70px;
+  }
+
+body {
+  background-color: #22313F;
 }

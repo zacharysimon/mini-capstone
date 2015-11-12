@@ -1,10 +1,15 @@
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="#">Products</a></li>
+  <li role="presentation"><a href="#">About</a></li>
+</ul>
+
 
 <div class = "storefront container">
 <% @products.each do |product| %>
   <div class="media">
     <div class="media-left media-middle">
-      <a href="/">
-        <img class="media-object" src = <%= product.image %> alt= <%= product.name%>>
+      <a href = "/" >
+        <img class=" media-object" src = <%= product.image %> alt= <%= product.name%> >
       </a>
     </div>
     <div class="media-body">
