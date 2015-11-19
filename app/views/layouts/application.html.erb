@@ -7,7 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class = "container">
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="/products">Products</a></li>
+    <li role="presentation"><a href="#">About</a></li>
+    <li role="presentation"><a href="/products/new">Create</a></li>
+    <button type="button" class="btn btn-default" aria-label="Right Align">
+      <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+    </button>
+  </ul>
+</div>
 <%= yield %>
 
 </body>

@@ -1,0 +1,40 @@
+//general styling for entire site
+$lightbulb-yellow: #F4D03F;
+body {
+  background-color: #22313F;
+}
+p {
+    color: $lightbulb-yellow;
+}
+.container{
+    padding: 20px;
+}
+h1, h2, div {
+  color: white;
+}
+
+// styling specific to home page 
+  .jumbotron .btn{
+    background-color: #22313F
+  }
+
+// styling for navigation bar 
+.nav button {
+  margin-left: 60%;
+}
+
+// styling for index page
+  .index img {
+    width: 100px;
+    height: 100px;
+    margin-right: 40px;
+  }
+  .index h4 {
+    color:white;
+    display: inline;
+  }
+ .index .price { 
+    text-alight: right;
+    padding-left: 100%;
+    display: inline;}
+ 
