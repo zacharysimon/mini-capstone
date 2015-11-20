@@ -1,7 +1,12 @@
+
+
 //general styling for entire site
-$lightbulb-yellow: #F4D03F;
-body {
-  background-color: #22313F;
+$lightbulb-yellow: #FF9E00;
+$text-titles: #0084FF;
+$blue-background: #22313F;
+
+.well {
+  background-color: $blue-background;
 }
 p {
     color: $lightbulb-yellow;
@@ -9,8 +14,14 @@ p {
 .container{
     padding: 20px;
 }
-h1, h2, div {
-  color: white;
+
+h1, h2, div, a {
+  color: $text-titles;
+}
+
+a:hover {
+  color: $lightbulb-yellow;
+
 }
 
 // styling specific to home page 
@@ -21,20 +32,17 @@ h1, h2, div {
 // styling for navigation bar 
 .nav button {
   margin-left: 60%;
+  background-color: $lightbulb-yellow;
 }
+
 
 // styling for index page
   .index img {
     width: 100px;
     height: 100px;
-    margin-right: 40px;
+    margin-right: 20px;
   }
-  .index h4 {
-    color:white;
-    display: inline;
-  }
- .index .price { 
-    text-alight: right;
-    padding-left: 100%;
-    display: inline;}
+
+  
+
  

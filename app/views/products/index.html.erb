@@ -6,13 +6,19 @@
       <div class="media col-md-6">
         <div class = "well">
         <div class="media-left media-middle">
-          <a href = "/products/<%= product.name %>" >
-            <img class=" media-object" src = <%= product.image %> alt= <%= product.name%> >
+          <a href = "/products/<%= product.id %>" >
+            <img class="media-object" src = <%= product.image %> alt= <%= product.name%> >
           </a>
         </div>
         <div class="media-body index">
-          <h4 class="media-heading"><a href ="/products/<%= product.id %>"> <%= product.name %> </a></h4>
-          <h4 class="media price"> $<%= product.price %> </h5>
+          <div class = "row">
+            <div class = "col-xs-8">
+              <h4 class="media-heading"><a href ="/products/<%= product.id %>"> <%= product.name %> </a></h4>
+            </div>
+            <div class = "col-xs-4">
+              <h5 class="media price"> $<%= product.price %> </h5>
+            </div>
+          </div>
           <p> <%= product.description %> </p>
         </div>
         </div>

@@ -37,13 +37,17 @@ class ProductsController < ApplicationController
     description: params[:input_description],
     image: params[:input_image]
     )
-    redirect_to "/products/#{@product.id}"
+  flash[:success] = "Product was successfully updated!"
+  redirect_to "/products/#{@product.id}"
   end
 
   def destroy
     @products = Product.all
     @product_to_delete = Product.find_by(id: params[:id])
     @product_to_delete.delete
+
+
+    flash[:success] = "Product was successfully deleted!"
     redirect_to '/products'
   end 
 

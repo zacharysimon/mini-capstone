@@ -1,4 +1,7 @@
 class Product < ActiveRecord::Base
+  SALES_TAX = 0.09
+
+
 
   def sale_message
     if price.to_i < 2 
@@ -9,11 +12,11 @@ class Product < ActiveRecord::Base
   end 
 
   def calculate_tax
-    (price.to_f * 0.1).to_f
+    price * SALES_TAX
   end
 
   def total_price
-    price.to_f + calculate_tax
+    price + calculate_tax
 
   end
 
