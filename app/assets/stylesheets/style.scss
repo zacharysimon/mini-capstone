@@ -31,10 +31,12 @@ a:hover {
 
 // styling for navigation bar 
 .nav button {
-  margin-left: 60%;
   background-color: $lightbulb-yellow;
 }
-
+.logo {
+  padding: 0 40px 0 0;
+  display: inline;
+}
 
 // styling for index page
   .index img {
@@ -42,7 +44,10 @@ a:hover {
     height: 100px;
     margin-right: 20px;
   }
-
+  .index{
+  height: 150px;
+ 
+  }
   
 
  

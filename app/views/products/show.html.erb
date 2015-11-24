@@ -1,15 +1,36 @@
 
 <div class = "container">
-  <h1><%= @product.sale_message %></h1>
-  <h1>Product information:</h1>
+  <h1 class = "sale-message"><%= @product.sale_message %></h1>
   <h2><%= @product.name %></h2>
+  <h5>Made by <%= @product.supplier.name %></h3>
+
+  <div class="row">
+    <% @product.images.each do |image_object| %>
+      <div class="carousel slide">
+        <div class="col-xs-6 col-md-3 show-image">
+          <div class="carousel-inner">
+            <figure class= "item active">
+              <a href="#" class="thumbnail">
+                <img src= <%= image_object.url %>  alt="...">
+              </a>
+            </figure>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <p>Description: <%= @product.description %></p>
   <p>Price: <%= @product.price %>, with Tax: <%= @product.calculate_tax%>, so Total Price of <%= @product.total_price %></p>
-  <img src = "<%= @product.image %>">
+
+
+
   <div>
     <%= link_to "Edit this product", "/products/#{@product.id}/edit" %>
   </div>
   <div>
     <%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %>
   </div>
+
+
 </div>
