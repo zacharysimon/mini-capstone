@@ -1,6 +1,14 @@
 
 
 <div class = "index container">
+
+  <div class = "container">
+    <a href="/products?input_sort=price&input_sort_order=asc"><button type="button" class="btn" aria-label="Right Align"><span class="glyphicon glyphicon-sort-by-order" aria-hidden="true"></span></span></button>
+    </a>
+    <a href="/products?input_sort=price&input_sort_order=desc"><button type="button" class="btn" aria-label="Right Align"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></span></button>
+    </a>
+  </div>
+
   <div class = "row">
     <% @products.each do |product| %>
       <div class="media col-md-6">

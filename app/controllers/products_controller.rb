@@ -22,11 +22,15 @@ class ProductsController < ApplicationController
   end
 
   def show 
-    if params[:id] == "random"
-      product_id = [rand(1..Product.count)]
-      @product = Product.find_by(id: product_id)
+    if current_user
+      if params[:id] == "random"
+        product_id = [rand(1..Product.count)]
+        @product = Product.find_by(id: product_id)
+      elsif
+        @product = Product.find_by(id: params[:id])
+      end
     else
-      @product = Product.find_by(id: params[:id])
+        redirect_to '/users/sign_in'
     end
   end
 
@@ -38,7 +42,6 @@ class ProductsController < ApplicationController
       name: params[:input_name],
       price: params[:input_price],
       description: params[:input_description],
-      image: params[:input_image]
     )
     redirect_to '/products'
   end
@@ -53,7 +56,6 @@ class ProductsController < ApplicationController
     name: params[:input_name],
     price: params[:input_price],
     description: params[:input_description],
-    image: params[:input_image]
     )
   flash[:success] = "Product was successfully updated!"
   redirect_to "/products/#{@product.id}"

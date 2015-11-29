@@ -1,0 +1,45 @@
+<div class="container">
+  <table class="table table-bordered">
+     <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Order Date</th>
+        <th>Order Quantity</th>
+        <th>Item Price</th>
+        <th>Total Tax</th>
+        <th>Total</th>
+        <th>User email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>
+              <img class="media-object order-show" src = <%= @order.product.images.first.url %> alt= <%= @order.product.name%> >
+          </td>
+          <td>
+              <p><%= @order.product.name %></p>
+          </td>
+          <td>
+              <p><%= @order.created_formated %></p>
+          </td>
+          <td>
+              <p><%= @order.quantity %></p>
+          </td>
+          <td>
+              <p>$<%= @order.subtotal %></p>
+          </td>
+          <td>
+              <p>$<%= @order.tax * @order.quantity%></p>
+          </td>
+          <td>
+              <p>$<%= @order.total * @order.quantity%></p>
+          </td>
+          <td>
+              <p><%= @user %></p>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
