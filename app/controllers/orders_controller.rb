@@ -2,8 +2,7 @@ class OrdersController < ApplicationController
 
   def show
     if current_user
-      @cart_items = current_user.carted_products
-      @user = current_user.email
+      @just_purchased_items = CartedProduct.where("order_id LIKE ?", params[:id])
     else
       redirect_to '/users/sign_up'
     end
@@ -32,6 +31,11 @@ class OrdersController < ApplicationController
       item.update(status: "purchased", order_id: @new_order.id)
     end
 
-    redirect_to '/orders'
+    
+
+    flash[:success] = "Order was successfully created!"
+
+    redirect_to "/orders/#{@new_order.id}"
+
   end
 end

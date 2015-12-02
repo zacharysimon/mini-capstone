@@ -1,20 +1,60 @@
 
 
 <div class="container">
-<%=  Order.last.total %>
+
+  <table class="table table-bordered">
+     <thead>
+      <tr>
+        <th>Email</th>
+        <th>Subtotal</th>
+        <th>Tax</th>
+        <th>Total</th>
+        <th>Order Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>
+              <p> <%=Order.last.user.email %> </p>
+          </td>
+          <td>
+              <p><%= Order.last.subtotal  %></p>
+          </td>
+          <td>
+              <p><%= Order.last.tax  %></p>
+          </td>
+          <td>
+              <p>$<%= Order.last.total %></p>
+          </td>
+          <td>
+            <p>$<%= Order.last.created_at  %></p>
+          </td>
+      </tr>
+    </tbody>
+  </table>
 
   <table class="table table-bordered">
      <thead>
       <tr>
         <th>Product</th>
-        <th>Order Date</th>
         <th>Order Quantity</th>
         <th>Product Price</th>
-        <th>Edit</th>
       </tr>
     </thead>
     <tbody>
-    
+    <% @just_purchased_items.each do |cart_item| %>
+      <tr>
+          <td>
+              <p><%= cart_item.product.name %></p>
+          </td>
+          <td>
+              <p><%= cart_item.quantity %></p>
+          </td>
+          <td>
+              <p>$<%= cart_item.product.price %></p>
+          </td>
+      </tr>
+      <% end %>
     </tbody>
   </table>
 
