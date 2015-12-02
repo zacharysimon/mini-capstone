@@ -5,7 +5,7 @@
 
     <h1 class = "sale-message"><%= @product.sale_message %></h1>
     
-    <%= form_tag "/orders", method: :post do %>
+    <%= form_tag "/carted_products", method: :post do %>
       <div class="form-group">
         <%= label_tag :input_quantity %>
         <%= text_field_tag(:input_quantity)%>
@@ -14,7 +14,7 @@
         <%= hidden_field_tag :input_product_id, @product.id %>
       </div>
       <div>
-        <%= button_tag 'Buy Now!', class: "btn btn-default" %>
+        <%= button_tag 'Add to cart!', class: "btn btn-default" %>
       </div>
     <% end %>
 
