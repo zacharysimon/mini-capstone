@@ -34,6 +34,11 @@
 
   <p>Description: <%= @product.description %></p>
   <p>Price: <%= @product.price %>, with Tax: <%= @product.calculate_tax%>, so Total Price of <%= @product.total_price %></p>
+  <p>Categories: 
+  <% @product.categories.each do |category| %>
+      <a href="/products?category=<%= category.name %>"> <%= category.name %></a>
+  <% end %>
+    </p>
 
 
 
