@@ -1,8 +1,11 @@
+
+
 <div class="container">
+<%=  Order.last.total %>
+
   <table class="table table-bordered">
      <thead>
       <tr>
-        <th>Image</th>
         <th>Product</th>
         <th>Order Date</th>
         <th>Order Quantity</th>
@@ -11,28 +14,7 @@
       </tr>
     </thead>
     <tbody>
-    <% @cart_items.each do |cart_item| %>
-      <tr>
-          <td>
-              <img class="media-object order-show" src = <%= cart_item.product.images.first.url %> alt= <%= cart_item.product.name%> >
-          </td>
-          <td>
-              <p><%= cart_item.product.name %></p>
-          </td>
-          <td>
-              <p><%= cart_item.created_at %></p>
-          </td>
-          <td>
-              <p><%= cart_item.quantity %></p>
-          </td>
-          <td>
-              <p>$<%= cart_item.product.price %></p>
-          </td>
-          <td>
-            <a href="#">Remove</a>
-          </td>
-      </tr>
-      <% end %>
+    
     </tbody>
   </table>
 

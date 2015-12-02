@@ -13,7 +13,7 @@
     <% @cart_items.each do |cart_item| %>
       <tr>
           <td>
-              <img class="media-object order-show" src = <%= cart_item.product.images.first.url %> alt= <%= cart_item.product.name%> >
+              <img class="media-object cart-show" src = <%= cart_item.product.images.first.url %> alt= <%= cart_item.product.name%> >
           </td>
           <td>
               <p><%= cart_item.product.name %></p>
@@ -31,5 +31,16 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class = "container">
+        <%= form_tag "/orders", method: :post do %>
+          <div class="form-group">
+            <%= hidden_field_tag :user_id, current_user.id %>
+          </div>
+          <div>
+            <%= button_tag 'Buy now!', class: "btn btn-default" %>
+          </div>
+        <% end %>
+  </div>
 
 </div>
