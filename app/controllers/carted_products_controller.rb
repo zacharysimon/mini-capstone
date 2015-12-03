@@ -11,17 +11,18 @@ class CartedProductsController < ApplicationController
       redirect_to '/carted_products'
     else
       redirect_to '/products'
-      flash[:warning] = "Sign in to add this to your cart!"
+      flash[:info] = "Sign in to add this to your cart!"
     end
   end
 
   def index
 
    if current_user
-      @cart_items = current_user.carted_products.where("status LIKE ?","carted")
+      @cart_items = current_user.carted_products.where(status: "carted")
 
-      if @cart_items.length == 0
+      if !@cart_items.any? #.any? is the same as .length == 0 but more readable
         redirect_to '/products'
+        flash[:info] = "You got nothin' in yo cart. Add some bulbs!"
       end 
     else
         redirect_to '/products'
@@ -37,7 +38,7 @@ class CartedProductsController < ApplicationController
     )
 
 
-  flash[:success] = "Product was successfully removed from cart!"
+  flash[:warning] = "Product was successfully removed from cart!"
   redirect_to "/carted_products"
 
   end

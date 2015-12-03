@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       subtotal_calc += item.product.price * item.quantity
     end
 
-    tax_calc = subtotal_calc * 0.09
+    tax_calc = subtotal_calc * Product::SALES_TAX 
     total_calc = tax_calc + subtotal_calc
 
     @new_order = Order.create(
@@ -27,9 +27,7 @@ class OrdersController < ApplicationController
       subtotal: subtotal_calc
       )
 
-    @purchased_items.each do |item|
-      item.update(status: "purchased", order_id: @new_order.id)
-    end
+    @purchased_items.update_all(status: "purchased", order_id: @new_order.id)
 
     
 
