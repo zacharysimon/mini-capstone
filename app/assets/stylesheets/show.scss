@@ -12,6 +12,14 @@
   width: 200px;
 }
 
-tr {
+tr, th {
   text-align: center;
+
+}
+
+
+.order-quantity {
+  border-style: solid;
+  border-color: #22313F;
+  border-width: 1px
 }
