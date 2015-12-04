@@ -38,16 +38,24 @@ class ProductsController < ApplicationController
   def new
     unless current_user && current_user.admin
       redirect_to '/'
+    else
+      @product = Product.new 
     end
   end
 
   def create
-    @new_product = Product.create(
+    @product = Product.new(
       name: params[:input_name],
       price: params[:input_price],
       description: params[:input_description],
       )
-    redirect_to '/products'
+    if @product.save 
+      flash[:success] = "Product successfully created!"
+      redirect_to '/products'
+    else
+      render :new
+    end
+
   end
 
   def edit
@@ -61,16 +69,17 @@ class ProductsController < ApplicationController
   def update
     if current_user && current_user.admin
      @product = Product.find_by(id: params[:id])
-     @product.update(
-      name: params[:input_name],
-      price: params[:input_price],
-      description: params[:input_description],
-      )
-     flash[:success] = "Product was successfully updated!"
-     redirect_to "/products/#{@product.id}"
-    else
-      redirect_to '/'
+     if @product.update(
+        name: params[:input_name],
+        price: params[:input_price],
+        description: params[:input_description],
+        )
+       flash[:success] = "Product was successfully updated!"
+       redirect_to "/products/#{@product.id}"
+     else
+      render :edit 
     end
+  end
 end
 
 def destroy
