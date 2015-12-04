@@ -44,12 +44,14 @@
   </div>
 </div>
 
+<% if current_user && current_user.admin %>
   <div>
     <%= link_to "Edit this product", "/products/#{@product.id}/edit" %>
   </div>
   <div>
     <%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %>
   </div>
+<% end %>
 
 
 </div>

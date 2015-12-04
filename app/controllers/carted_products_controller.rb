@@ -1,5 +1,6 @@
 class CartedProductsController < ApplicationController
-
+  before_action :authenticate_user! 
+  
   def create
     if current_user
       @carted_products = CartedProduct.create(

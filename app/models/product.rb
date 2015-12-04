@@ -7,6 +7,9 @@ class Product < ActiveRecord::Base
   has_many :carted_products
   has_many :orders, through: :carted_products
 
+  validates :name, :price, presence: true 
+  validates :price, numericality: true 
+
   SALES_TAX = 0.09
 
   def sale_message

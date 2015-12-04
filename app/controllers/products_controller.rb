@@ -20,7 +20,6 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
-
   end
 
   def show 
@@ -32,11 +31,14 @@ class ProductsController < ApplicationController
         @product = Product.find_by(id: params[:id])
       end
     else
-        redirect_to '/users/sign_in'
+      redirect_to '/users/sign_in'
     end
   end
 
   def new
+    unless current_user && current_user.admin
+      redirect_to '/'
+    end
   end
 
   def create
@@ -44,35 +46,41 @@ class ProductsController < ApplicationController
       name: params[:input_name],
       price: params[:input_price],
       description: params[:input_description],
-    )
+      )
     redirect_to '/products'
   end
 
   def edit
-    @product = Product.find_by(id: params[:id])
+    if current_user && current_user.admin 
+      @product = Product.find_by(id: params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def update
-   @product = Product.find_by(id: params[:id])
-   @product.update(
-    name: params[:input_name],
-    price: params[:input_price],
-    description: params[:input_description],
-    )
-  flash[:success] = "Product was successfully updated!"
-  redirect_to "/products/#{@product.id}"
-  end
+    if current_user && current_user.admin
+     @product = Product.find_by(id: params[:id])
+     @product.update(
+      name: params[:input_name],
+      price: params[:input_price],
+      description: params[:input_description],
+      )
+     flash[:success] = "Product was successfully updated!"
+     redirect_to "/products/#{@product.id}"
+    else
+      redirect_to '/'
+    end
+end
 
-  def destroy
-    @products = Product.all
-    @product_to_delete = Product.find_by(id: params[:id])
-    @product_to_delete.delete
+def destroy
+  @products = Product.all
+  @product_to_delete = Product.find_by(id: params[:id])
+  @product_to_delete.delete
 
 
-    flash[:success] = "Product was successfully deleted!"
-    redirect_to '/products'
-  end 
-
-
+  flash[:success] = "Product was successfully deleted!"
+  redirect_to '/products'
+end 
 
 end
