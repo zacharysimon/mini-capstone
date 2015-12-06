@@ -12,7 +12,7 @@ class SuppliersController < ApplicationController
   end
 
   def create
-    @supplier = Supplier.create(params[:supplier])
+    @supplier = Supplier.create(supplier_params)
     flash[:success] = "Supplier successfully created!"
     redirect_to "/suppliers/#{@supplier.id}"
   end
@@ -23,7 +23,7 @@ class SuppliersController < ApplicationController
 
   def update
     @supplier = Supplier.find_by(id: params[:id])
-    @supplier.update(params[:supplier])
+    @supplier.update(supplier_params)
     redirect_to "/suppliers/#{@supplier.id}"
   end
 
@@ -32,6 +32,12 @@ class SuppliersController < ApplicationController
     @supplier.update(:active => false)
     flash[:success] = "Supplier successfully removed!"
     redirect_to '/suppliers'
+  end
+
+  private
+
+  def supplier_params
+    params.require(:supplier, :name).permit(:email, :phone_number)
   end
 
 end
