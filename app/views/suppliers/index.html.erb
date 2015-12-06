@@ -1,0 +1,13 @@
+<div class= "index container">
+  <div class = "row">
+    <% @suppliers.each do |supplier| %>
+    <div class="media col-md-4">
+      <a href="/suppliers/<%= supplier.id %>"><h1><%= supplier.name %></h1></a>
+      <p><%= supplier.email %></p>
+      <p> <%= supplier.phone_number %></p>
+    </div>
+    <% end %>
+  </div>
+
+
+</div>
